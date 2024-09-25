@@ -1,0 +1,124 @@
+button:hover {
+    background-color: #5b5b5b; /* Thay đổi màu khi hover */
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
+}
+input[type="email"], input[type="password"] {
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #1DB954; /* Màu viền khi focus */
+    outline: none; /* Bỏ outline mặc định */
+}
+.menu-content button {
+    margin: 20px; /* Tăng khoảng cách giữa các nút */
+    padding: 15px 30px; /* Thay đổi kích thước nút */
+}
+.menu-header {
+    font-size: 18px;
+    text-align: center; /* Căn giữa văn bản */
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://i.redd.it/m0q1kaipo4v81.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+}
+
+.login-form h1 {
+    font-size: 24px;
+    color: #ebeff3;
+    margin-bottom: 10px;
+}
+
+input[type="email"], input[type="password"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #1DB954; /* Màu viền khi focus */
+    outline: none; /* Bỏ outline mặc định */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #66758ca1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
+
+button:hover {
+    background-color: #5b5b5b; /* Thay đổi màu khi hover */
+}
+
+#register-link {
+    color: #5b5b5b;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://media.tenor.com/BrNtIejIcXUAAAAC/pixel-art.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0px 8px;
+    background-color: rgba(157, 153, 153, 0.21);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 17px;
+}
+
+.menu-content {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.menu-content button {
+    margin: 20px; /* Khoảng cách giữa các nút */
+    padding: 15px 30px; /* Kích thước nút */
+}
