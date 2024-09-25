@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đa Chức Năng</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Phần đăng nhập -->
+    <div class="login-container" id="login-container">
+        <div class="login-form">
+            <h1>Đăng Nhập</h1>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Mật khẩu" required>
+                <button type="submit">Đăng Nhập</button>
+                <a href="#" id="register-link">Đăng Kí</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Phần menu chính -->
+    <div class="menu-container" id="menu-container" style="display: none;">
+        <div class="menu-header">
+            <span id="date-time"></span>
+            <span id="clock"></span>
+        </div>
+        <div class="menu-content">
+            <button id="show-calendar">Comingsoon</button>
+            <button id="show-chat">Comingsoon</button>
+            <button id="logout">Comingsoon</button>
+        </div>
+        <div id="calendar" style="display: none;">
+            <!-- Nội dung lịch -->
+        </div>
+        <div id="chat" style="display: none;">
+            <!-- Nội dung chat -->
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
