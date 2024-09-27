@@ -1,62 +1,68 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const loginContainer = document.getElementById('login-container');
-    const menuContainer = document.getElementById('menu-container');
-    const loginForm = document.getElementById('login-form');
-    const showCalendarButton = document.getElementById('show-calendar');
-    const showChatButton = document.getElementById('show-chat');
-    const calendar = document.getElementById('calendar');
-    const chat = document.getElementById('chat');
-    const logoutButton = document.getElementById('logout');
-    const dateTimeDisplay = document.getElementById('date-time');
-    const clockDisplay = document.getElementById('clock');
+const wrapper = document.querySelector('.wrapper');
+const registerLink = document.querySelector('.register-link');
+const loginLink = document.querySelector('.login-link');
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+const menuContainer = document.getElementById("menu-container");
 
-    // Hàm chuyển đổi từ 24h sang 12h
-    function formatTime(date) {
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        let ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // 0 giờ phải là 12
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        return hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+// Giữ nguyên code của bạn
+registerLink.onclick = () => {
+    wrapper.classList.add('active');
+};
+
+loginLink.onclick = () => {
+    wrapper.classList.remove('active');
+};
+
+// Thêm chức năng hiển thị menu sau khi đăng nhập hoặc đăng ký thành công
+function showMenu() {
+    loginForm.style.display = "none";
+    registerForm.style.display = "none";
+    menuContainer.style.display = "block";
+}
+
+// Xử lý đăng ký
+registerForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const username = registerForm.querySelector("input[type='text']").value;
+    const email = registerForm.querySelector("input[type='email']").value;
+    const password = registerForm.querySelector("input[type='password']").value;
+
+    // Kiểm tra xem email đã được đăng ký chưa
+    if (localStorage.getItem(email)) {
+        alert("Email đã được đăng ký.");
+    } else {
+        // Lưu thông tin người dùng vào localStorage
+        const user = { username: username, password: password };
+        localStorage.setItem(email, JSON.stringify(user));
+        alert("Đăng ký thành công! Vui lòng đăng nhập.");
+        wrapper.classList.remove('active'); // Chuyển về form đăng nhập
     }
-
-    // Cập nhật giờ và ngày
-    function updateDateTime() {
-        const now = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        dateTimeDisplay.textContent = now.toLocaleDateString('vi-VN', options);
-        clockDisplay.textContent = formatTime(now);
-    }
-
-    // Cập nhật thời gian mỗi giây
-    setInterval(updateDateTime, 1000);
-    updateDateTime(); // Cập nhật ngay lập tức
-
-    // Xử lý đăng nhập
-    loginForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        loginContainer.style.display = 'none';
-        menuContainer.style.display = 'flex';
-    });
-
-    // Hiển thị nội dung lịch
-    showCalendarButton.addEventListener('click', function () {
-        calendar.style.display = 'block';
-        chat.style.display = 'none';
-    });
-
-    // Hiển thị nội dung chat
-    showChatButton.addEventListener('click', function () {
-        chat.style.display = 'block';
-        calendar.style.display = 'none';
-    });
-
-    // Đăng xuất
-    logoutButton.addEventListener('click', function () {
-        menuContainer.style.display = 'none';
-        loginContainer.style.display = 'flex';
-    });
 });
+
+// Xử lý đăng nhập
+loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const email = loginForm.querySelector("input[type='text']").value;
+    const password = loginForm.querySelector("input[type='password']").value;
+
+    const user = JSON.parse(localStorage.getItem(email));
+
+    if (user && user.password === password) {
+        alert("Đăng nhập thành công!");
+        showMenu(); // Hiển thị menu sau khi đăng nhập thành công
+    } else {
+        alert("Email hoặc mật khẩu không đúng.");
+    }
+});
+
+// Hiển thị đồng hồ và ngày giờ trong menu
+function updateClock() {
+    const now = new Date();
+    const dateString = now.toLocaleDateString();
+    const timeString = now.toLocaleTimeString();
+    document.getElementById("date-time").textContent = `Ngày: ${dateString}`;
+    document.getElementById("clock").textContent = `Giờ: ${timeString}`;
+}
+
+setInterval(updateClock, 1000);
